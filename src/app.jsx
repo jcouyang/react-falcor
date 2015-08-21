@@ -57,13 +57,13 @@ let Todos = React.createClass({
       return (
         <div>
           <header className="header">
-				    <h1>todos</h1>
-				    <input className="new-todo" placeholder="What needs to be done?" autofocus/>
-			    </header>
+            <h1>todos</h1>
+            <input className="new-todo" placeholder="What needs to be done?" autofocus/>
+          </header>
           <section class="main">
             <div>
               <input className="toggle-all" type="checkbox"/>
-				      <label for="toggle-all">Mark all as complete</label>
+              <label for="toggle-all">Mark all as complete</label>
               <ul className="todo-list">
                 {todoList}
               </ul>
@@ -89,24 +89,24 @@ let Footer = React.createClass({
   render: function() {
     return (
       <footer className="footer">
-				<span className="todo-count"><strong>{this.props.count}</strong> item left</span>
-				<ul className="filters">
-					<li>
-						<a className={this.state.selected=="all"?"selected":""} data-name="all"
+        <span className="todo-count"><strong>{this.props.count}</strong> item left</span>
+        <ul className="filters">
+          <li>
+            <a className={this.state.selected=="all"?"selected":""} data-name="all"
                onClick={this._handleClick}>
               All
             </a>
-					</li>
-					<li>
-						<a className={this.state.selected=="active"?"selected":""} data-name="active" onClick={this._handleClick}>Active</a>
-					</li>
-					<li>
-						<a className={this.state.selected=="completed"?"selected":""} data-name="completed" onClick={this._handleClick}>Completed</a>
-					</li>
-				</ul>
+          </li>
+          <li>
+            <a className={this.state.selected=="active"?"selected":""} data-name="active" onClick={this._handleClick}>Active</a>
+          </li>
+          <li>
+            <a className={this.state.selected=="completed"?"selected":""} data-name="completed" onClick={this._handleClick}>Completed</a>
+          </li>
+        </ul>
 
-				<button className="clear-completed">Clear completed</button>
-			</footer>
+        <button className="clear-completed">Clear completed</button>
+      </footer>
     )
   }
 });
