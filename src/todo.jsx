@@ -18,7 +18,10 @@ let Todo = React.createClass({
       <li className={this.state.done?"completed":""}>
       <div className="view">
 				<input className="toggle" type="checkbox" checked={this.state.done}
-               onClick={e=>this.props.model.setValue(`todos[${this.props.todoid}].done`, e.target.checked).then(value=>this.setState({done:value}))} />
+               onClick={e=>this.props.model
+                               .setValue(
+                                 `todos[${this.props.todoid}].done`, e.target.checked)
+                               .then(value=>this.setState({done:value}))} />
 				<label>{this.state.name}</label>
 				<button className="destroy"></button>
 			</div>
