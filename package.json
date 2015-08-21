@@ -1,0 +1,28 @@
+{
+  "name": "react-falcor",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm run build && npm run static",
+    "build": "browserify src/app.jsx -t babelify -o public/index.js",
+    "watch": "watchify src/app.jsx -t babelify -o public/index.js",
+    "static": "static public"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "babelify": "^6.2.0",
+    "beefy": "^2.1.5",
+    "browserify": "^11.0.1",
+    "duo": "^0.15.3",
+    "duo-babel": "^6.0.0",
+    "livereloadify": "^2.0.0",
+    "node-static": "^0.7.7",
+    "watchify": "^3.3.1"
+  },
+  "dependencies": {
+    "falcor": "^0.1.12",
+    "react": "^0.13.3"
+  }
+}
