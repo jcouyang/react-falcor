@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "npm run build && npm run static",
-    "build": "browserify src/app.jsx -t babelify -o public/index.js",
-    "watch": "watchify src/app.jsx -t babelify -o public/index.js",
+    "build": "browserify src/app.jsx -t babelify -o public/index.js -d",
+    "watch": "watchify src/app.jsx -t babelify -o public/index.js -d",
     "static": "static public"
   },
   "author": "",
@@ -14,7 +14,7 @@
   "devDependencies": {
     "babelify": "^6.2.0",
     "beefy": "^2.1.5",
-    "browserify": "^11.0.1",
+    "browserify": "10.2.4",
     "duo": "^0.15.3",
     "duo-babel": "^6.0.0",
     "livereloadify": "^2.0.0",
