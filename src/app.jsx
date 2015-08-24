@@ -1,6 +1,7 @@
 let React = require('react'),
-    falcor = require('../node_modules/falcor/browser'),
-    Todo = require('./todo.jsx');
+    Todo = require('./todo.jsx'),
+    falcor = require('falcor'),
+    Footer = require('./footer.jsx');
 
 let todoModel = new falcor.Model({
   cache: {
@@ -47,9 +48,9 @@ let Todos = React.createClass({
   _updateState: function(model) {
     model.getValue("todos.length").then(len => {
       this.setState({range:len})
-      return len-1;
+        return len-1;
     }).then(range=>model.get(`todos[0..${range}].done`))
-        .then(res=>this.setState(res.json))
+         .then(res=>this.setState(res.json))
   },
   _handleNewTodo: function(e) {
     e.preventDefault();
@@ -61,7 +62,7 @@ let Todos = React.createClass({
     newtodo.length=this.state.range+1
     this.props.model.set({json: {todos:newtodo}})
                        .then(_=>this.setState({range:this.state.range+1}))
-      .then(_=>this.refs.newtodo.getDOMNode().value='')
+                       .then(_=>this.refs.newtodo.getDOMNode().value='')
   },
   componentDidMount: function() {
     this._updateState(this.props.model);
@@ -95,42 +96,6 @@ let Todos = React.createClass({
           <Footer filter={this._changeFilter} count={fjs.toArray(this.state.todos).filter(x=>!x[1].done).length}/>
         </div>
       )
-  }
-});
-
-let Footer = React.createClass({
-  getInitialState:function() {
-    return {
-      selected: "all"
-    }
-  },
-  _handleClick: function(e) {
-    let val = e.target.dataset.name;
-    this.props.filter(val);
-    this.setState({selected: val});
-  },
-  render: function() {
-    return (
-      <footer className="footer">
-        <span className="todo-count"><strong>{this.props.count}</strong> item left</span>
-        <ul className="filters">
-          <li>
-            <a className={this.state.selected=="all"?"selected":""} data-name="all"
-               onClick={this._handleClick}>
-              All
-            </a>
-          </li>
-          <li>
-            <a className={this.state.selected=="active"?"selected":""} data-name="active" onClick={this._handleClick}>Active</a>
-          </li>
-          <li>
-            <a className={this.state.selected=="completed"?"selected":""} data-name="completed" onClick={this._handleClick}>Completed</a>
-          </li>
-        </ul>
-
-        <button className="clear-completed">Clear completed</button>
-      </footer>
-    )
   }
 });
 
